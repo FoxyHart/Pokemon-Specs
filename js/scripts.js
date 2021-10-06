@@ -1,3 +1,5 @@
+let pokemonRepository = (function() {
+//added IIFE function
 let pokemonList = [ 
     { name: "Chespin", type: [ 'Grass' ], height : "1", weight: "20" },
     { name: "Quilladin", type: ['Grass' ], height: "2", weight: "64" },
@@ -12,32 +14,43 @@ let pokemonList = [
     { name: "Diggersby", type: ['Normal' , 'Ground'], height: "3", weight: "93"},
     { name: "Zigzagoon", type: ['Normal'], height: "1", weight: "39"},
     { name: "Linoone", type: ['Normal'], height: "1", weight: "72"}
-]
+];
 //document.write ("Chespin-" + " Type: Grass," + " Height: 1," + " Weight: 20");
 //for adding to pokedex entry { name: '', type: ['' , ''], height: , weight: }, or { name: '', type: [''], height: , weight: }, 
-
-   // loop to write out pokemon type, height and weight, listing one pokemon as larger
- pokemonList.forEach(function(pokemon) {
-    // varibles for pokemons names, height, weight and type
-    //let pokemonName = pokemonList[i].name;
-    //let pokemonType = pokemonList[i].type;
-    //let pokemonHeight = pokemonList[i].height;
-    //let pokemonWeight = pokemonList[i].weight;
+function getAll() {
+    return pokemonList;
+};
+function add(item) {
+    return pokemonList.push(item);
+};
+ 
+return {
+    getAll: getAll,
+    add: add,
+};
+}());
+// forEach function to write out pokemon type, height and weight, listing one pokemon as larger
+ pokemonRepository.getAll().forEach(function(pokemon) {
+    //varibles for pokemons names, height, weight and type
+    let pokemonName = pokemon.name;
+    let pokemonType = pokemon.type;
+    let pokemonHeight = pokemon.height;
+    let pokemonWeight = pokemon.weight;
 
    if (pokemonHeight >= 6) {
      document.write(
       '<p>' + 
-      pokemon.name +
+      pokemonName +
       ' ' +
       '(Type: ' +
-      pokemon.type +
+      pokemonType +
       ')' +
       '(Height: ' +
-       pokemon.height +
+       pokemonHeight +
       ')' + 
       " Wow, that's HUGE" + 
       '(Weight: ' +
-      pokemon.weight +
+      pokemonWeight +
       ')' +
       '</p>'
       ); 
@@ -45,16 +58,16 @@ let pokemonList = [
     else { 
     document.write( 
         '<p>' +
-        pokemon.name +
+        pokemonName +
         ' ' + 
         '(Type: ' +
-        pokemon.type +
+        pokemonType +
         ')' +
      '(Height: ' +
-      pokemon.height +
+      pokemonHeight +
        ')' +
        '(Weight: ' +
-      pokemon.weight +
+      pokemonWeight +
       ')' +
        '</p>'
        );
