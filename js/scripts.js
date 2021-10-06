@@ -17,46 +17,47 @@ let pokemonList = [
 //for adding to pokedex entry { name: '', type: ['' , ''], height: , weight: }, or { name: '', type: [''], height: , weight: }, 
 
    // loop to write out pokemon type, height and weight, listing one pokemon as larger
-for (let i = 0; i < pokemonList.length; i++) {
+ pokemonList.forEach(function(pokemon) {
     // varibles for pokemons names, height, weight and type
-    let pokemonName = pokemonList[i].name;
-    let pokemonType = pokemonList[i].type;
-    let pokemonHeight = pokemonList[i].height;
-    let pokemonWeight = pokemonList[i].weight;
+    //let pokemonName = pokemonList[i].name;
+    //let pokemonType = pokemonList[i].type;
+    //let pokemonHeight = pokemonList[i].height;
+    //let pokemonWeight = pokemonList[i].weight;
 
-  if (pokemonHeight >= 6) {
+   if (pokemonHeight >= 6) {
      document.write(
       '<p>' + 
-      pokemonName +
+      pokemon.name +
       ' ' +
       '(Type: ' +
-      pokemonType +
+      pokemon.type +
       ')' +
       '(Height: ' +
-       pokemonHeight +
+       pokemon.height +
       ')' + 
       " Wow, that's HUGE" + 
       '(Weight: ' +
-      pokemonWeight +
+      pokemon.weight +
       ')' +
       '</p>'
       ); 
     } 
-    else {
+    else { 
     document.write( 
         '<p>' +
-        pokemonName +
+        pokemon.name +
         ' ' + 
         '(Type: ' +
-        pokemonType +
+        pokemon.type +
         ')' +
      '(Height: ' +
-      pokemonHeight +
+      pokemon.height +
        ')' +
        '(Weight: ' +
-      pokemonWeight +
+      pokemon.weight +
       ')' +
        '</p>'
        );
     }
-}
+})
+
