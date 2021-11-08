@@ -18,12 +18,12 @@ function showModal(pokemon) {
     titleElement.innerText = pokemon.name;
 //
     let typeElement = document.createElement('p');
-    typeElement.innerText = pokemon.type;
+    typeElement.innerText = 'Type: '  + pokemon.types[0].type.name;
  
     let heightElement = document.createElement('p');
     heightElement.innerText = 'Height: ' + pokemon.height;
 
-    let weightElement = document.createElelment('p');
+    let weightElement = document.createElement('p');
     weightElement.innerText = 'Weight: ' + pokemon.weight;
 
     let imgElement = document.createElement('img')
@@ -116,7 +116,11 @@ function addListItem(pokemon) {
         console.log(item);
       });
   }
-
+function showDetails(pokemon) {
+    loadDetails(pokemon).then(function () {
+        showModal(pokemon);
+    });
+}
   return {
     add: add,
     getAll: getAll,
