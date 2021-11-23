@@ -6,6 +6,11 @@ function showModal(pokemon) {
 
 let modalTitle = document.querySelector(".modal-header");
 let modalBody = document.querySelector(".modal-body");
+// adding mulitple types
+let typeMap = pokemon.types;
+let map = typeMap.map(function(x) {
+  return x.type.name;
+});
 // clearing modal of content
 modalTitle.innerHTML = '';
 modalBody.innerHTML = '';
@@ -15,7 +20,7 @@ modalBody.innerHTML = '';
     titleElement.style.textTransform = 'capitalize';
 // creating type element for modal
     let typeElement = document.createElement('p');
-    typeElement.innerText = pokemon.types[0].type.name;
+    typeElement.innerHTML = 'Types: ' + map;
     typeElement.style.textTransform = 'capitalize';
  // creating height element for modal
     let heightElement = document.createElement('p');
@@ -29,6 +34,7 @@ modalBody.innerHTML = '';
 // creating shiny img element for modal
     let imgElementShiny = document.createElement('img')    
     imgElementShiny.src = pokemon.imageUrlShiny
+
 // adding modal
 
     modalTitle.appendChild(titleElement);
@@ -65,9 +71,22 @@ function addListItem(pokemon) {
     button.setAttribute('data-toggle', 'modal');
     button.setAttribute('data-target', '#pokemonModal');
     pokemonContainer.appendChild(listPokemon);
+   // adding imgs to button
+
+    loadDetails(pokemon).then(function() {
+      let imgDiv = document.createElement('div');
+      imgDiv.classList.add('buttonImg');
+      button.appendChild(imgDiv);
+
+      let imgOfficialArt = document.createElement('img');
+      imgOfficialArt.classList.add('imgOfficialArt');
+      imgOfficialArt.src = pokemon.imgUrlOfficial;
+      imgDiv.appendChild(imgOfficialArt);
+    });    
     button.addEventListener('click', function() {
         showDetails(pokemon)
     });
+
 }
 // function for loading the pokemon list from API
  function loadList() {
@@ -98,26 +117,40 @@ function addListItem(pokemon) {
       item.height = details.height;
       item.types = details.types;
       item.weight = details.weight;
-     // item.imgOfficial = details.sprites.other.official-artwork.front_default;
+      item.imgUrlOfficial = details.sprites.other.official-artwork.front_default;
     }).catch(function (e) {
       console.error(e);
     });
-  } 
+  }  
   // search bar function
-  function searchPokemon() {
-    let input = document.getElementById('searchbar').value
-    input= input.toLowerCase();
-    let list = document.getElementsByClassName('list-pokemon');
-      
-    for (i = 0; i < x.length; i++) { 
-        if (!list[i].innerHTML.toLowerCase().includes(input)) {
-            list[i].style.display="No pokemon found";
-        }
-        else {
-            list[i].style.display="list-item";                 
-        }
+  let search = document.querySelector('#searchbar')
+
+  search.addEventListener('input', ()  => {
+    
+    input = document.querySelector('.pokemon-list');
+    filter = search.value.toUpperCase();
+    li = input.getElementsByTagName('li');
+  
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+      button = li[i].getElementsByTagName('button')[0];
+      value = button.textContent || button.innerText;
+      if (value.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
     }
-}
+  });
+  // add img to button 
+  var buttons=document.getElementsByClassName("button");
+  for(var b=0;b<buttons.length;b++)
+  {
+    if(buttons[b].id=="ok")
+    {
+      buttons[b].style.background="";   
+    }
+  }
   // to show pokemon in modal and console log
 function showDetails(pokemon) {
     pokemonRepository.loadDetails(pokemon).then(function () {
