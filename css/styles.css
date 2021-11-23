@@ -1,89 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@0;1&display=swap');
 .button-class {
-  background-color: #ffde00; 
+  background-color: grey; opacity:0.8; 
   border: none;
   color: white;
   padding: 16px 32px;
   text-align: center;
   text-decoration: none;
   text-transform: capitalize;
-  font-size: 16px;
+  font-size: 20px;
   margin: 4px 2px;
   -webkit-transition-duration: 0.4s; 
   transition-duration: 0.4s;
   cursor: pointer;
   color: black;
   border: 2px solid #ff0000;
-  border-radius: 10px;
+  border-radius: 40px;
   font-family: 'Merriweather', serif;
   list-style-type: none;
 }
-.h1 {
-    color: green;
-    float: center;
+body {
+  background-image: url(../img/329113.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 0 100px;
 }
-#modal-container {
-    position: fixed;
-    padding: 20px;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-    width: 40%;
-    height: 40%;
-    background: rgba(0, 0, 0, 0.5);
-    margin-top: 100px;
-    border-radius: 10px;
-    z-index: 999;
-    overflow: auto;
+#pokemonModal {
     text-align: center;
+    font-family: 'Merriweather', serif;
   }
-  .modal {
-    margin: 120px;
-    display: inline-block;
-    box-sizing: border-box;
-    background: lightgoldenrodyellow;
-    padding: 15px;
-    width: 40%;
-    height: 40%;
-    max-width: 700px;
-    text-align: center;
-    border-radius: 30px;
-  }
-  .modal img {
-    height: 150px;
-    width: 150px;
-  }
-  .modal-close {
-    float: right;
-    -webkit-appearance: none;
-    border: 0;
-    background: none;
-    color: #777;
-    text-decoration: underline;
-  } 
-  .modal h1 {
-    margin-top: 20px;
-  }
-  
-  .modal p {
-    margin-bottom: 0;
-  }
-  
-  #modal-container {
-    display: none;
-  }
-  #modal-container.is-visible {
-  display: block;
-  }
-.pokemonContainer {
-  display: grid;
-  margin-top: 140px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 
-}
 .pokemon-list {
   margin-top:140px;
-  width: 33%;
- }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 10px;
+}
+
  

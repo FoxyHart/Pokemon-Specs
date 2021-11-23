@@ -1,18 +1,14 @@
 let pokemonRepository = (function() {
 //added IIFE function
 
-let modalContainer = document.querySelector('#modal-container');
 //function for modal to pop up when a pokemon is selected
 function showModal(pokemon) {
-    modalContainer.innerHTML = '';
-    let modal = document.createElement('div');
-    modal.classList.add('modal');
-//creating button for modal closing
-    let closeButtonElement = document.createElement('button');
-    closeButtonElement.classList.add('modal-close');
-    closeButtonElement.innerText = 'X';
-    closeButtonElement.addEventListener('click', hideModal);
 
+let modalTitle = document.querySelector(".modal-header");
+let modalBody = document.querySelector(".modal-body");
+// clearing modal of content
+modalTitle.innerHTML = '';
+modalBody.innerHTML = '';
 // header for name for modal
     let titleElement = document.createElement('h1');
     titleElement.innerText = pokemon.name;
@@ -34,35 +30,14 @@ function showModal(pokemon) {
     let imgElementShiny = document.createElement('img')    
     imgElementShiny.src = pokemon.imageUrlShiny
 // adding modal
-    modal.appendChild(closeButtonElement);
-    modal.appendChild(titleElement);
-    modal.appendChild(typeElement);
-    modal.appendChild(heightElement);
-    modal.appendChild(weightElement);
-    modal.appendChild(imgElement);
-    modal.appendChild(imgElementShiny);
 
-    modalContainer.appendChild(modal);
-    modalContainer.classList.add('is-visible');
+    modalTitle.appendChild(titleElement);
+    modalBody.appendChild(typeElement);
+    modalBody.appendChild(heightElement);
+    modalBody.appendChild(weightElement);
+    modalBody.appendChild(imgElement);
+    modalBody.appendChild(imgElementShiny);
 }
-//function for modal removal
-function hideModal() {
-  let modalContainer = document.querySelector('#modal-container');
-  modalContainer.classList.remove('is-visible');
-}
-//hide modal by ESC
-window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-    hideModal();
-  }
-});
-// hide modal when clicked away from 
-modalContainer.addEventListener('click', (e) => {
-  let target = e.target;
-  if (target === modalContainer) {
-    hideModal();
-  }
-});
 //end of modal
 
 // empty array for pokemon 
@@ -85,7 +60,10 @@ function addListItem(pokemon) {
     let button = document.createElement('button');
     button.innerText = pokemon.name; 
     button.classList.add('button-class');
+    listPokemon.classList.add('group-list-item');
     listPokemon.appendChild(button);
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '#pokemonModal');
     pokemonContainer.appendChild(listPokemon);
     button.addEventListener('click', function() {
         showDetails(pokemon)
@@ -120,6 +98,7 @@ function addListItem(pokemon) {
       item.height = details.height;
       item.types = details.types;
       item.weight = details.weight;
+     // item.imgOfficial = details.sprites.other.official-artwork.front_default;
     }).catch(function (e) {
       console.error(e);
     });
@@ -145,6 +124,7 @@ function showDetails(pokemon) {
         showModal(pokemon);
     });
 }
+
 // returns all functions
   return {
     add: add,
@@ -161,52 +141,3 @@ pokemonRepository.loadList().then(function() {
     pokemonRepository.addListItem(pokemon);
   });
 });
-
-/* * This code lines implies: a function to add a specific color to each pokemon
-  button, after checking the type of the pokemon.
-  For 18 different pokemon types add 18 different color to the pokemon button 
-  function addColor(pokemon, button) {
-    let url = pokemon.detailsUrl;
-    return fetch(url)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (details) {
-      let type = details.types[0].type.name;
-
-      //call the class based on the pokemon type
-      button.addClass(type + '-pokemon');
-    })
-    .catch(function (e) {
-      console.error(e);
-    });
-
-    START: Pokemon button style based on their types*/
-/* bug pokemon 
-.bug-pokemon {
-  border: 4px solid #43aa8b;
-  transition-duration: 0.6s;
-}
-.bug-pokemon:hover {
-  background-color: #43aa8b;
-  color: white;
-  transition-duration: 0.6s;
-}
-/* DARK pokemon 
-.dark-pokemon {
-  border: 4px solid #3d405b;
-  transition-duration: 0.6s;
-}
-/* This code lines implies: an individual color styling and behavior of coler
-changing by hover over each single pokemon information button 
-.pokemon-color-type {
-  border: 4px solid #ffca3a;
-}
-.pokemon-color-type:hover {
-  background-color: #ffca3a;
-  color: black;
-}
-.nav-item {
-  float: right;
-}
-  }*/
