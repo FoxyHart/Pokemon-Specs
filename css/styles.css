@@ -21,7 +21,7 @@
   font-weight: 600;
 }
 .button-class:hover {
-  background-image: linear-gradient(to bottom right,#ff0000, #3b4cca, #ffde00);
+  background-image: linear-gradient(to bottom right, #f08030, #78c850, #98d8d8, #ee99ac, #f85888 );
 }
 body {
   background-image: url(../img/31984799.png);
@@ -58,13 +58,13 @@ body {
   margin-top:140px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  padding: 10px;
+  padding: 30px;
 }
 .grass{
   background-color: #78c850;
 }
 .fire{
-  background-color: #f08030
+  background-color: #f08030;
 }
 .water{
   background-color: #6890f0;
