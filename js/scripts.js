@@ -6,6 +6,7 @@ function showModal(pokemon) {
 
 let modalTitle = document.querySelector(".modal-header");
 let modalBody = document.querySelector(".modal-body");
+let modalContent = document.querySelector(".modal-content");
 // adding mulitple types
 let typeMap = pokemon.types;
 let map = typeMap.map(function(x) {
@@ -14,6 +15,9 @@ let map = typeMap.map(function(x) {
 // clearing modal of content
 modalTitle.innerHTML = '';
 modalBody.innerHTML = '';
+//container for modal div background 
+    //let backgroundElement = document.createElement('div')
+    //title
 // header for name for modal
     let titleElement = document.createElement('h1');
     titleElement.innerText = pokemon.name;
@@ -34,15 +38,19 @@ modalBody.innerHTML = '';
 // creating shiny img element for modal
     let imgElementShiny = document.createElement('img')    
     imgElementShiny.src = pokemon.imageUrlShiny
+// add typebackground to modal 
+    let typeBackground = document.createElement ('div')
+    let typeTerms = pokemon.types[0].type.name;
+    typeBackground.classList.add('typeBackground', typeTerms);
 
 // adding modal
-
     modalTitle.appendChild(titleElement);
-    modalBody.appendChild(typeElement);
-    modalBody.appendChild(heightElement);
-    modalBody.appendChild(weightElement);
-    modalBody.appendChild(imgElement);
-    modalBody.appendChild(imgElementShiny);
+    modalBody.appendChild(typeBackground);
+    typeBackground.appendChild(typeElement);
+    typeBackground.appendChild(heightElement);
+    typeBackground.appendChild(weightElement);
+    typeBackground.appendChild(imgElement);
+    typeBackground.appendChild(imgElementShiny);
 }
 //end of modal
 
@@ -50,7 +58,6 @@ modalBody.innerHTML = '';
 let pokemonList = [];
 // API for Pokemon and their stats
 let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-
 // adds pokemon to empty array
 function add(pokemon) {
         pokemonList.push(pokemon);
@@ -77,12 +84,13 @@ function addListItem(pokemon) {
       let imgDiv = document.createElement('div');
       imgDiv.classList.add('buttonImg');
       button.appendChild(imgDiv);
-
+  //adding images to buttons
       let imgOfficialArt = document.createElement('img');
       imgOfficialArt.classList.add('imgOfficialArt');
-      imgOfficialArt.src = pokemon.imgUrlOfficial;
+      imgOfficialArt.src = pokemon.imageUrl;
       imgDiv.appendChild(imgOfficialArt);
-    });    
+    }); 
+  // add typebackground to modal   
     button.addEventListener('click', function() {
         showDetails(pokemon)
     });
@@ -104,7 +112,7 @@ function addListItem(pokemon) {
     }).catch(function (e) {
       console.error(e);
     })
-  }
+  };
   //function to retreive details about each pokemon to display
   function loadDetails(item) {
     let url = item.detailsUrl;
@@ -117,7 +125,6 @@ function addListItem(pokemon) {
       item.height = details.height;
       item.types = details.types;
       item.weight = details.weight;
-      item.imgUrlOfficial = details.sprites.other.official-artwork.front_default;
     }).catch(function (e) {
       console.error(e);
     });
