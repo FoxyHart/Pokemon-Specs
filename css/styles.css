@@ -117,18 +117,21 @@ body {
 .dragon{
   background-color: #7038f8;
 }
-@media all and (max-width: 500px) {
-  .body {
-    background-image: url(../img/319847999.png) no-repeat center center fixed;
+@media screen and (max-width: 500px) {
+  body {
+  background-image: url('../img/319847999.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 0 100px;
   }
-}
-@media all and (min-width: 500px) and (max-width: 750px){
-  .body {
-    background-image: url(../img/319847999.png) no-repeat center center fixed;
   }
-}
-@media all and (max-width: 750px) {
-   .body {
-     background-image: url(../img/319847999.png) no-repeat center center fixed;
-   }
- }
+  @media screen and (min-width: 500px) and (max-width: 750px) {
+    body {
+    background-image: url('../img/31984799MD.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 0 100px;
+    }
+    }
