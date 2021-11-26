@@ -60,6 +60,10 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   padding: 30px;
 }
+.imgOfficialArt {
+  width: 100px;
+  height: 100px;
+}
 .grass{
   background-color: #78c850;
 }

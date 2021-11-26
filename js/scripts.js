@@ -87,7 +87,7 @@ function addListItem(pokemon) {
   //adding images to buttons
       let imgOfficialArt = document.createElement('img');
       imgOfficialArt.classList.add('imgOfficialArt');
-      imgOfficialArt.src = pokemon.imageUrl;
+      imgOfficialArt.src = pokemon.imageUrlOfficial;
       imgDiv.appendChild(imgOfficialArt);
     }); 
   // add typebackground to modal   
@@ -125,6 +125,7 @@ function addListItem(pokemon) {
       item.height = details.height;
       item.types = details.types;
       item.weight = details.weight;
+      item.imageUrlOfficial = details.sprites.other['official-artwork'].front_default
     }).catch(function (e) {
       console.error(e);
     });
