@@ -4,53 +4,47 @@ let pokemonRepository = (function() {
 //function for modal to pop up when a pokemon is selected
 function showModal(pokemon) {
 
-let modalTitle = document.querySelector(".modal-header");
-let modalBody = document.querySelector(".modal-body");
-let modalContent = document.querySelector(".modal-content");
+let modalTitle = $('.modal-title');
+let modalBody = $('.modal-body');
 // adding mulitple types
 let typeMap = pokemon.types;
 let map = typeMap.map(function(x) {
   return x.type.name;
 });
 // clearing modal of content
-modalTitle.innerHTML = '';
-modalBody.innerHTML = '';
+modalTitle.empty();
+modalBody.empty();
 //container for modal div background 
     //let backgroundElement = document.createElement('div')
     //title
 // header for name for modal
-    let titleElement = document.createElement('h1');
-    titleElement.innerText = pokemon.name;
-    titleElement.style.textTransform = 'capitalize';
-// creating type element for modal
-    let typeElement = document.createElement('p');
-    typeElement.innerHTML = 'Types: ' + map;
-    typeElement.style.textTransform = 'capitalize';
+    let titleElement = $('<h1 class="text-capitalize">'+ pokemon.name + '</h1>');
+   // creating type element for modal
+    let typeElement = $('<p class="text-capitalize">' + 'Types: ' + map +'</p>');
  // creating height element for modal
-    let heightElement = document.createElement('p');
-    heightElement.innerText = 'Height: ' + pokemon.height;
+    let heightElement = $('<p>' + 'Height: ' + pokemon.height + 'm' + '</p>');
 // creating weight element for modal
-    let weightElement = document.createElement('p');
-    weightElement.innerText = 'Weight: ' + pokemon.weight;
+    let weightElement = $('<p>' + 'Weight: ' + pokemon.weight + '</p>');
 // creating img element for modal
-    let imgElement = document.createElement('img')
-    imgElement.src = pokemon.imageUrl
+    let imgElement = $('<img>');
+    imgElement.attr('src', pokemon.imageUrl);
 // creating shiny img element for modal
-    let imgElementShiny = document.createElement('img')    
-    imgElementShiny.src = pokemon.imageUrlShiny
+    let imgElementShiny = $('<img>');
+    imgElementShiny.attr('src', pokemon.imageUrlShiny);
 // add typebackground to modal 
-    let typeBackground = document.createElement ('div')
-    let typeTerms = pokemon.types[0].type.name;
-    typeBackground.classList.add('typeBackground', typeTerms);
-
+    //let typeBackground = document.createElement ('div')
+    //let typeTerms = pokemon.types[0].type.name;
+    //typeBackground.classList.add('typeBackground', typeTerms);
+   // let typeBackground = $('<div class="typeBackground">' +'</div>')
+    //typeBackground.attr('src', pokemon.types[0].type.name)
 // adding modal
-    modalTitle.appendChild(titleElement);
-    modalBody.appendChild(typeBackground);
-    typeBackground.appendChild(typeElement);
-    typeBackground.appendChild(heightElement);
-    typeBackground.appendChild(weightElement);
-    typeBackground.appendChild(imgElement);
-    typeBackground.appendChild(imgElementShiny);
+    modalTitle.append(titleElement);
+   // modalBody.append(typeBackground);
+    modalBody.append(typeElement);
+    modalBody.append(heightElement);
+    modalBody.append(weightElement);
+    modalBody.append(imgElement);
+    modalBody.append(imgElementShiny);
 }
 //end of modal
 
@@ -163,8 +157,7 @@ function addListItem(pokemon) {
 function showDetails(pokemon) {
     pokemonRepository.loadDetails(pokemon).then(function () {
         showModal(pokemon);
-    });
-}
+    });}
 
 // returns all functions
   return {
@@ -173,7 +166,8 @@ function showDetails(pokemon) {
     addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails,
-    showDetails: showDetails
+    showDetails: showDetails,
+    showModal: showModal
   };
 })();
 // outside of IIFE showing all contents of IIFE
