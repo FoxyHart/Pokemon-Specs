@@ -26,7 +26,7 @@
   transform: rotateY(-180deg);
 }
 body {
-  background-image: url('/Pokemon-Specs/src/img/31984799.png');
+  background-image: url('../img/31984799.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -120,7 +120,7 @@ body {
 }
 @media screen and (max-width: 500px) {
   body {
-  background-image: url('//Pokemon-Specs/src/img/319847999.png');
+  background-image: url('../img/319847999.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -129,7 +129,7 @@ body {
   }
   @media screen and (min-width: 500px) and (max-width: 750px) {
     body {
-    background-image: url('/Pokemon-Specs/src/img/31984799MD.png');
+    background-image: url('../img/31984799MD.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
