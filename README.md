@@ -8,7 +8,7 @@ and API.
 When tasked in choosing the styling I decided to make it themed after a popular Pokemon.
 The only difference I would have liked to make was to find a way to utilize jQuery to make the modal body backgrounds match the pokemons type coloring.
 There was a lot to learn here and a lot more I hope to learn and revisit.
-![Getting Started](../img/screenshot.png)
+![Getting Started](../Pokemon-Specs/img/screenshot.png)
 
 How to get the project running: 
 Using this Github respository: https://github.com/FoxyHart/Pokemon-Specs.git
