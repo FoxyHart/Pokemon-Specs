@@ -14,9 +14,6 @@ let map = typeMap.map(function(x) {
 // clearing modal of content
 modalTitle.empty();
 modalBody.empty();
-//container for modal div background 
-    //let backgroundElement = document.createElement('div')
-    //title
 // header for name for modal
     let titleElement = $('<h1 class="text-capitalize">'+ pokemon.name + '</h1>');
    // creating type element for modal
@@ -31,15 +28,8 @@ modalBody.empty();
 // creating shiny img element for modal
     let imgElementShiny = $('<img>');
     imgElementShiny.attr('src', pokemon.imageUrlShiny);
-// add typebackground to modal 
-    //let typeBackground = document.createElement ('div')
-    //let typeTerms = pokemon.types[0].type.name;
-    //typeBackground.classList.add('typeBackground', typeTerms);
-   // let typeBackground = $('<div class="typeBackground">' +'</div>')
-    //typeBackground.attr('src', pokemon.types[0].type.name)
 // adding modal
     modalTitle.append(titleElement);
-   // modalBody.append(typeBackground);
     modalBody.append(typeElement);
     modalBody.append(heightElement);
     modalBody.append(weightElement);

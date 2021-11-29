@@ -2,7 +2,6 @@
 .button-class {
   background-color: rgb(196, 157, 108); opacity:0.9; 
   border: none;
-  color: white;
   padding: 16px 32px;
   text-align: center;
   text-decoration: none;
@@ -27,7 +26,7 @@
   transform: rotateY(-180deg);
 }
 body {
-  background-image: url(../img/31984799.png);
+  background-image: url('/Pokemon-Specs/src/img/31984799.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -39,6 +38,7 @@ body {
     font-family: 'Philosopher', serif;
     font-weight: 600;
     font-size: 20px;
+    color: black;
   }
 .modal-content {
     border-radius: 20px;
@@ -50,6 +50,7 @@ body {
   height: 100%;
   border-radius: 20px;
   background-color: #614900;
+
 }
 .modal-body {
   background-color: #b38703;
@@ -119,7 +120,7 @@ body {
 }
 @media screen and (max-width: 500px) {
   body {
-  background-image: url('../img/319847999.png');
+  background-image: url('//Pokemon-Specs/src/img/319847999.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -128,7 +129,7 @@ body {
   }
   @media screen and (min-width: 500px) and (max-width: 750px) {
     body {
-    background-image: url('../img/31984799MD.png');
+    background-image: url('/Pokemon-Specs/src/img/31984799MD.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
