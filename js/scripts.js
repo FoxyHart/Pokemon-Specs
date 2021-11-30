@@ -41,7 +41,7 @@ modalBody.empty();
 // empty array for pokemon 
 let pokemonList = [];
 // API for Pokemon and their stats
-let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=1083';
 // adds pokemon to empty array
 function add(pokemon) {
         pokemonList.push(pokemon);
