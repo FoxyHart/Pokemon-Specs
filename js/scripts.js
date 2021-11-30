@@ -91,10 +91,7 @@ function addListItem(pokemon) {
           detailsUrl: item.url
         };
         add(pokemon);
-        console.log(pokemon);
       });
-    }).catch(function (e) {
-      console.error(e);
     })
   };
   //function to retreive details about each pokemon to display
@@ -119,14 +116,14 @@ function addListItem(pokemon) {
 
   search.addEventListener('input', ()  => {
     
-    input = document.querySelector('.pokemon-list');
-    filter = search.value.toUpperCase();
-    li = input.getElementsByTagName('li');
+    const input = document.querySelector('.pokemon-list');
+    const filter = search.value.toUpperCase();
+    const li = input.getElementsByTagName('li');
   
     // Loop through all list items, and hide those who don't match the search query
-    for (i = 0; i < li.length; i++) {
-      button = li[i].getElementsByTagName('button')[0];
-      value = button.textContent || button.innerText;
+    for (let i = 0; i < li.length; i++) {
+     const button = li[i].getElementsByTagName('button')[0];
+      const value = button.textContent || button.innerText;
       if (value.toUpperCase().indexOf(filter) > -1) {
         li[i].style.display = "";
       } else {
